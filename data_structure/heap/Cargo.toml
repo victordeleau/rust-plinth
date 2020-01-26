@@ -1,0 +1,13 @@
+[package]
+name = "heap"
+version = "0.1.0"
+authors = ["Victor <victor.deleau@gmx.com>"]
+edition = "2018"
+
+#![allow(dead_code)]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+
+rand = "0.5.5"
