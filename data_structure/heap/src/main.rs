@@ -2,7 +2,7 @@
 use rand::Rng;
 
 struct Heap {
-    data: [u8; 128],
+    data: Vec<i64>,
     size: usize,
     capacity: usize,
 }
@@ -10,11 +10,11 @@ struct Heap {
 impl Heap {
 
     fn new() -> Heap {
-        Heap {
-            data: [0; 128],
+        return Heap {
+            data: Vec::new(),
             size: 0,
-            capacity: 128
-        }
+            capacity: 0
+        };
     }
 
     // get index relative to another //
@@ -28,7 +28,11 @@ impl Heap {
     }
 
     fn get_parent_index(&self, child_index: usize) -> usize {
-        return child_index - 1 / 2;
+        if child_index == 0 {
+            return 0;
+        } else {
+            return (child_index - 1) / 2;
+        }   
     }
 
     
@@ -49,15 +53,15 @@ impl Heap {
 
     // get relative index value //
 
-    fn get_left_child(&self, index: usize) -> u8 {
+    fn get_left_child(&self, index: usize) -> i64 {
         return self.data[ self.get_left_child_index(index) ];
     }
 
-    fn get_right_child(&self, index: usize) -> u8 {
+    fn get_right_child(&self, index: usize) -> i64 {
         return self.data[ self.get_right_child_index(index) ];
     }
 
-    fn get_parent(&self, index: usize) -> u8 {
+    fn get_parent(&self, index: usize) -> i64 {
         return self.data[ self.get_parent_index(index) ];
     }
 
@@ -66,7 +70,7 @@ impl Heap {
     fn swap(&mut self, index_one: usize, index_two: usize) {
 
         if index_one < (self.size as usize)-1 && index_two < (self.size as usize)-1 {
-            let tmp: u8 = self.data[index_one];
+            let tmp: i64 = self.data[index_one];
             self.data[index_one] = self.data[index_two];
             self.data[index_two] = tmp;
         } else {
@@ -83,7 +87,7 @@ impl Heap {
     }
 
     // get min value //
-    fn peek(&self) -> u8 {
+    fn peek(&self) -> i64 {
         if self.size != 0 {
             return self.data[0];
         } else {
@@ -95,12 +99,9 @@ impl Heap {
     // ensure values are correctly placed in heap in a bottom up fashion
     fn heapify_up(&mut self) {
         let mut index: usize = (self.size as usize) - 1; // last node
-        print!("{}", self.has_parent(index));
-        print!("{}", self.get_parent(index) > self.data[index]);
         while( self.has_parent(index) && self.get_parent(index) > self.data[index] ) {
             self.swap(self.get_parent_index(index), index);
             index = self.get_parent_index(index);
-            print!("a");
         }
     }
 
@@ -126,9 +127,9 @@ impl Heap {
     }
 
     // pop min value while maintaining heap structure
-    fn poll(&mut self) -> u8 {
+    fn poll(&mut self) -> i64 {
 
-        let value: u8 = self.data[0];
+        let value: i64 = self.data[0];
         self.data[0] = self.data[(self.size as usize)-1];
         self.size -= 1;
         self.heapify_down();
@@ -137,37 +138,32 @@ impl Heap {
     }
 
     // add value to heap while maintaining structure
-    fn add(&mut self, new_value: u8){
+    fn add(&mut self, new_value: i64){
 
         self.has_space_left();
-        self.data[self.size] = new_value;
+        self.data.push(new_value);
         self.size += 1;
         self.heapify_up();
     }
 
 }
 
-
-
 fn main(){
 
-    println!("Hello, world!");
+    println!("Heap demo");
 
-    let mut array: [u8; 32] = rand::random();
+    let mut array: [i64; 32] = [0;32];
+    for i in 0..32 { array[i] = rand::thread_rng().gen_range(1, 10) }
 
     let mut my_heap: Heap = Heap::new();
 
+    for i in 0..32 { my_heap.add(array[i]) }
+
     for i in 0..32 {
-        
-        print!("Add {}\n", array[i]);
-        my_heap.add(array[i]);
-
-        for j in 0..my_heap.size {
-            print!("{} ", my_heap.data[j]);
+        print!("{}\n", my_heap.poll());
+        for i in 0..my_heap.data.len() {
+            print!("{}", my_heap.data[i]);
         }
-
-        print!("\n");
-        
     }
 
 }
