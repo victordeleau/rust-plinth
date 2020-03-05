@@ -2,25 +2,32 @@
 
 Learning Rust step by step while going over the CS fundamentals
 
+## Content
 
-## Algorithm
+#### Game
 
-- Bubble sort
+- [Game of Life](./game/game_of_life/) :ballot_box_with_check:
 
-- Quick sort
-
-- Optimal matrix chain
-
-
-## Data Structure
-
-- Heap
-
-- Stack
+- [Guess](./game/guess/) :ballot_box_with_check:
 
 
-## Game
+#### Algorithm
 
-- Game of life
+- [Bubble sort](./algorithm/bubble_sort/) :construction:
 
-- Guess
+- [Quick sort](./algorithm/quick_sort/) :ballot_box_with_check:
+
+- [Optimal matrix chain](./algorithm/optimal_matrix_chain/) :ballot_box_with_check:
+
+
+#### Data Structure
+
+- [Heap](./data_structure/heap/) :construction:
+
+- [Stack](./data_structure/stack/) :construction:
+
+## Screenshot
+
+<p align="center">
+  <img src="./game/game_of_life/screenshot.png">
+</p>
