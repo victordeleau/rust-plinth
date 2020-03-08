@@ -20,7 +20,7 @@ Learning Rust step by step while going over the CS fundamentals.
 
 - :construction: [Bubble sort](./algorithm/bubble_sort/) 
 
-- :heavy_check_mark: [Quick sort](./algorithm/quick_sort/)
+- :heavy_check_mark: [Quick sort](./algorithm/quicksort/)
 
 - :heavy_check_mark:[Optimal matrix chain](./algorithm/optimal_matrix_chain/)
 
