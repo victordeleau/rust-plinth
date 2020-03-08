@@ -27,7 +27,7 @@ Learning Rust step by step while going over the CS fundamentals.
 
 #### Data Structure
 
-- :construction: [Heap](./data_structure/heap/) 
+- :heavy_check_mark: [Heap](./data_structure/heap/) 
 
 - :construction: [Stack](./data_structure/stack/) 
 
