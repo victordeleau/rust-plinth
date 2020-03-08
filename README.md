@@ -1,33 +1,38 @@
 # rust-plinth
 
-Learning Rust step by step while going over the CS fundamentals
+Learning Rust step by step while going over the CS fundamentals.
 
 ## Content
 
-#### Game
+#### Generative
 
-- [Game of Life](./game/game_of_life/) :ballot_box_with_check:
+- :heavy_check_mark: [Game of Life](./generative/game_of_life/)
 
-- [Guess](./game/guess/) :ballot_box_with_check:
+- :heavy_check_mark: [Perlin noise](./generative/perlin_noise/)
+
+
+#### Game 
+
+- :heavy_check_mark: [Guess](./game/guess/)
 
 
 #### Algorithm
 
-- [Bubble sort](./algorithm/bubble_sort/) :construction:
+- :construction: [Bubble sort](./algorithm/bubble_sort/) 
 
-- [Quick sort](./algorithm/quick_sort/) :ballot_box_with_check:
+- :heavy_check_mark: [Quick sort](./algorithm/quick_sort/)
 
-- [Optimal matrix chain](./algorithm/optimal_matrix_chain/) :ballot_box_with_check:
+- :heavy_check_mark:[Optimal matrix chain](./algorithm/optimal_matrix_chain/)
 
 
 #### Data Structure
 
-- [Heap](./data_structure/heap/) :construction:
+- :construction: [Heap](./data_structure/heap/) 
 
-- [Stack](./data_structure/stack/) :construction:
+- :construction: [Stack](./data_structure/stack/) 
 
-## Screenshot
+## Screenshots
 
 <p align="center">
-  <img src="./game/game_of_life/screenshot.png">
+  <img src="./generative/game_of_life/screenshot.png">
 </p>

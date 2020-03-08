@@ -4,7 +4,6 @@ use rand::Rng;
 struct Heap {
     data: Vec<i64>,
     size: usize,
-    capacity: usize,
 }
 
 impl Heap {
@@ -13,7 +12,6 @@ impl Heap {
         return Heap {
             data: Vec::new(),
             size: 0,
-            capacity: 0
         };
     }
 
@@ -39,11 +37,11 @@ impl Heap {
     // check if relative index exists //
 
     fn has_left_child(&self, index: usize) -> bool {
-        return self.get_left_child_index(index) < self.size;
+        return self.get_left_child_index(index) < self.data.len();
     }
 
     fn has_right_child(&self, index: usize) -> bool {
-        return self.get_right_child_index(index) < self.size;
+        return self.get_right_child_index(index) < self.data.len();
     }
 
     fn has_parent(&self, index: usize) -> bool {
@@ -69,36 +67,21 @@ impl Heap {
     // swap two value in the heap //
     fn swap(&mut self, index_one: usize, index_two: usize) {
 
-        if index_one < (self.size as usize)-1 && index_two < (self.size as usize)-1 {
-            let tmp: i64 = self.data[index_one];
-            self.data[index_one] = self.data[index_two];
-            self.data[index_two] = tmp;
-        } else {
-            ; // error handling
-        }
-    }
-
-    // check is space is left //
-    fn has_space_left(&self) -> bool {
-        if( self.size >= self.capacity ){
-            return false;
-        }
-        return true;
+        let tmp: i64 = self.data[index_one];
+        self.data[index_one] = self.data[index_two];
+        self.data[index_two] = tmp;
     }
 
     // get min value //
     fn peek(&self) -> i64 {
-        if self.size != 0 {
-            return self.data[0];
-        } else {
-            ; // error handling
-            return 0;
-        }
+        return self.data[0];
     }
 
     // ensure values are correctly placed in heap in a bottom up fashion
     fn heapify_up(&mut self) {
-        let mut index: usize = (self.size as usize) - 1; // last node
+
+        let mut index: usize = self.data.len() - 1;
+
         while( self.has_parent(index) && self.get_parent(index) > self.data[index] ) {
             self.swap(self.get_parent_index(index), index);
             index = self.get_parent_index(index);
@@ -111,6 +94,7 @@ impl Heap {
         let mut index: usize = 0; // root node
 
         while( self.has_left_child(index) ) {
+
             let mut smaller_child_index = self.get_left_child_index(index);
 
             if self.has_right_child(index) && self.get_right_child(index) < self.get_left_child(index) {
@@ -130,8 +114,9 @@ impl Heap {
     fn poll(&mut self) -> i64 {
 
         let value: i64 = self.data[0];
-        self.data[0] = self.data[(self.size as usize)-1];
-        self.size -= 1;
+
+        // put last item at the top, and find its correct place
+        self.data[0] = self.data[self.data.len()-1];
         self.heapify_down();
 
         return value;
@@ -140,12 +125,9 @@ impl Heap {
     // add value to heap while maintaining structure
     fn add(&mut self, new_value: i64){
 
-        self.has_space_left();
         self.data.push(new_value);
-        self.size += 1;
         self.heapify_up();
     }
-
 }
 
 fn main(){
@@ -157,13 +139,10 @@ fn main(){
 
     let mut my_heap: Heap = Heap::new();
 
+    // add random numbers to heap
     for i in 0..32 { my_heap.add(array[i]) }
 
-    for i in 0..32 {
-        print!("{}\n", my_heap.poll());
-        for i in 0..my_heap.data.len() {
-            print!("{}", my_heap.data[i]);
-        }
-    }
-
+    println!("\nSorted array:");
+    for i in 0..32 { print!("{} ", my_heap.poll()); }
+    println!("");
 }
