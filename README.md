@@ -8,7 +8,7 @@ Learning Rust step by step while going over the CS fundamentals.
 
 - :heavy_check_mark: [Game of Life](./generative/game_of_life/)
 
-- :heavy_check_mark: [Perlin noise](./generative/perlin_noise/)
+- :construction: [Perlin noise](./generative/perlin_noise/)
 
 
 #### Game 
