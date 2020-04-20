@@ -8,7 +8,7 @@ Learning Rust step by step while going over the CS fundamentals.
 
 - :heavy_check_mark: [Game of Life](./generative/game_of_life/)
 
-- :construction: [Perlin noise](./generative/perlin_noise/)
+- :heavy_check_mark: [Perlin noise](./generative/perlin_noise/)
 
 
 #### Game 
@@ -31,7 +31,11 @@ Learning Rust step by step while going over the CS fundamentals.
 
 - :construction: [Stack](./data_structure/stack/) 
 
-## Screenshots
+## Screenshot
+
+<p align="center">
+  <img src="./generative/perlin_noise/screenshot.png">
+</p>
 
 <p align="center">
   <img src="./generative/game_of_life/screenshot.png">

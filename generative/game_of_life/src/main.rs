@@ -4,7 +4,7 @@ use std::vec::Vec;
 
 use ansi_escapes::*; // specific characters
 
-const GRID_SIZE: (usize, usize) = (32, 32);
+const GRID_SIZE: (usize, usize) = (52, 52);
 const PROBABILITY: f32 = 0.4;
 const FPS: f32 = 10.0;
 
@@ -19,18 +19,18 @@ fn print_grid(grid_size: (usize, usize), grid: &Vec<Vec<char>>){
         None
     */
 
-    print!("    ");
+    print!("      ");
     for _ in  0..(grid_size.0+2)*2 {print!("\u{2588}");}
     println!("");
 
     for i in  0..grid_size.1 {
-        print!("    \u{2588}\u{2588}");
+        print!("      \u{2588}\u{2588}");
         for j in  0..grid_size.0 {
             print!("{}{}", grid[i][j], grid[i][j]);
         }
         println!("\u{2588}\u{2588}");
     }
-    print!("    ");
+    print!("      ");
     for _ in  0..(grid_size.0+2)*2 {print!("\u{2588}");}
     println!("\n");
 }
